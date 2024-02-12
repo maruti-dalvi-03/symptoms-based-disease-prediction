@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result - WellPredict</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <nav>
+                <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                  <i class="fas fa-bars">||</i>
+                </label>
+                <label class="logo" onclick="redirectToHomePage()">WellPredict</label>
+                <ul>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/about">About</a></li>
+                  <li><a href="/symptons-based-prediction">Prediction</a></li>
+                  <li><a href="/all-services">All Services</a></li>
+                  <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="result-container">
+            <h2>Prediction Result</h2>
+            <p>You are predicted to have: <strong>{{ disease }}</strong></p>
+
+            <h3>Treatment Recommendations:</h3>
+            <ul>
+                {% if disease in disease_info %}
+                    {% for treatment in disease_info[disease]['treatment'] %}
+                        <li>{{ treatment }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li>No specific treatment information available for this disease.</li>
+                {% endif %}
+            </ul>
+
+            <h3>Disease Information:</h3>
+            {% if disease in disease_info %}
+                <p>{{ disease_info[disease]['description'] }}</p>
+            {% else %}
+                <p>No information available for this disease.</p>
+            {% endif %}
+
+            <h3>Signs and Symptoms:</h3>
+            {% if disease in disease_info %}
+                <ul>
+                    {% for symptom in disease_info[disease]['symptoms'] %}
+                        <li>{{ symptom }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No information available for signs and symptoms of this disease.</p>
+            {% endif %}
+
+            <h3>Prevention Measures:</h3>
+            {% if disease in disease_info %}
+                <p>{{ disease_info[disease]['prevention'] }}</p>
+            {% else %}
+                <p>No information available for prevention measures of this disease.</p>
+            {% endif %}
+
+            <a href="/symptons-based-prediction">Go Back</a>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script>
+        function redirectToHomePage() {
+          window.location.href = '/';
+      }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About WellPredict</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <nav>
+                <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                  <i class="fas fa-bars">||</i>
+                </label>
+                <label class="logo" onclick="redirectToHomePage()">WellPredict</label>
+                <ul>
+                  <li><a href="/">Home</a></li>
+                  <li><a class="active" href="/about">About</a></li>
+                  <li><a href="/symptons-based-prediction">Prediction</a></li>
+                  <li><a href="/all-services">All Services</a></li>
+                  <li><a href="/contact">Contact</a></li>
+                </ul>
+              </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="about-container">
+            <h2>About WellPredict</h2>
+            <p>
+                WellPredict is a disease prediction system that helps users identify potential health issues based on their reported symptoms.
+                Our system utilizes machine learning algorithms to analyze symptom patterns and predict possible diseases or conditions.
+            </p>
+            <p>
+                Whether you are experiencing common symptoms or seeking general health information, WellPredict provides a user-friendly platform
+                for symptom checking and disease prediction. Keep in mind that the predictions are not a substitute for professional medical advice,
+                and users are encouraged to consult with healthcare professionals for accurate diagnoses.
+            </p>
+            <p>
+                Thank you for choosing WellPredict as your health companion. We are committed to providing reliable and accessible information
+                to help you make informed decisions about your well-being.
+            </p>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script>
+        function redirectToHomePage() {
+          window.location.href = '/';
+      }
+    </script>
+
+</body>
+</html>
