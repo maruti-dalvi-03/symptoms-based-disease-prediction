@@ -99,7 +99,8 @@ def predict():
     # Retrieve disease information based on the predicted disease
     disease_info_for_prediction = disease_info.get(predicted_disease, {})
 
-    return render_template('result.html', disease=predicted_disease, info=disease_info_for_prediction)
+    return render_template('result.html', disease=predicted_disease, disease_info=disease_info_for_prediction)
+
 
 
 
