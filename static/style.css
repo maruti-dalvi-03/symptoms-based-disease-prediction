@@ -46,7 +46,7 @@ nav ul li a{
   text-transform: uppercase;
   text-decoration: none;
 }
-a.active,a:hover{
+nav a.active,nav a:hover{
   background: #1b9bff;
   transition: .5s;
 }
@@ -62,6 +62,7 @@ a.active,a:hover{
 #check{
   display: none;
 }
+
 @media (max-width: 1052px){
   label.logo{
     font-size: 30px;
@@ -93,7 +94,7 @@ a.active,a:hover{
   nav ul li a{
     font-size: 20px;
   }
-  a:hover,a.active{
+  nav a:hover,nav a.active{
     background: none;
     color: #0082e6;
   }
@@ -348,6 +349,7 @@ p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   border-radius: 10px;
+  margin-top: 20px;
 }
 
 .result-container h2 {
@@ -356,6 +358,7 @@ p {
 
 .result-container p {
   margin-bottom: 20px;
+  color: #6c757d; /* Gray */
 }
 
 .result-container strong {
@@ -376,6 +379,16 @@ p {
   margin-bottom: 10px;
 }
 
+.result-container a {
+  text-decoration: none;
+  color: #e44d26; /* WellPredict Orange */
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.result-container a:hover {
+  color: #343a40; /* Dark Grayish Blue */
+}
 
 
 /*    contact page     */       /*    contact page     */        /*    contact page     */

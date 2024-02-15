@@ -16,7 +16,7 @@
             <nav>
                 <input type="checkbox" id="check">
                 <label for="check" class="checkbtn">
-                    <i class="fas fa-bars">||</i>
+                    <i class="fas fa-bars">&#9776;</i>
                 </label>
                 <label class="logo" onclick="redirectToHomePage()">WellPredict</label>
                 <ul>
@@ -32,19 +32,8 @@
 
     <main>
         <div class="result-container">
-            <h2>Prediction Result</h2>
+            <!-- <h2>Prediction Result</h2> -->
             <p>You are predicted to have: <strong>{{ disease }}</strong></p>
-
-            <h3>Treatment Recommendations:</h3>
-            <ul>
-                {% if disease_info %}
-                {% for treatment in disease_info['treatment'] %}
-                <li>{{ treatment }}</li>
-                {% endfor %}
-                {% else %}
-                <li>No specific treatment information available for this disease.</li>
-                {% endif %}
-            </ul>
 
             <h3>Disease Information:</h3>
             {% if disease_info %}
@@ -55,11 +44,7 @@
 
             <h3>Signs and Symptoms:</h3>
             {% if disease_info %}
-            <ul>
-                {% for symptom in disease_info['symptoms'] %}
-                <li>{{ symptom }}</li>
-                {% endfor %}
-            </ul>
+            <p>{{ disease_info['symptoms'] }}</p>
             {% else %}
             <p>No information available for signs and symptoms of this disease.</p>
             {% endif %}
@@ -70,6 +55,19 @@
             {% else %}
             <p>No information available for prevention measures of this disease.</p>
             {% endif %}
+
+            <h3>Treatment Recommendations:</h3>
+            {% if disease_info %}
+            <p>{{ disease_info['treatment'] }}</p>
+            {% else %}
+            <p>No specific treatment information available for this disease.</p>
+            {% endif %}
+
+
+
+
+
+
 
             <a href="/symptons-based-prediction">Go Back</a>
         </div>
