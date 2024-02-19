@@ -101,7 +101,33 @@ def predict():
 
     return render_template('result.html', disease=predicted_disease, disease_info=disease_info_for_prediction)
 
+@app.route('/all-services')
+def allServices():
+    return render_template('allServices.html')
 
+@app.route('/all-services/diabetes')
+def diabetesPredict():
+    # # Get user input from form
+    # input_features = [float(x) for x in request.form.values()]
+    
+    # # Convert input to numpy array and reshape
+    # input_array = np.array(input_features).reshape(1, -1)
+    
+    # # Make prediction
+    # prediction = model.predict(input_array)
+    # prediction_proba = model.predict_proba(input_array)
+    
+    # # Map predicted class to label
+    # class_labels = {
+    #     0: "No diabetes or only during pregnancy",
+    #     1: "Prediabetes",
+    #     2: "Diabetes"
+    # }
+    # predicted_label = class_labels.get(prediction[0], "Unknown")
+
+    # Return prediction result
+    # return render_template('diabetes.html', prediction=predicted_label, prediction_proba=prediction_proba)
+    return render_template('diabetes.html')
 
 
 @app.route('/contact')

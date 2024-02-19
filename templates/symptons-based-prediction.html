@@ -60,7 +60,7 @@
         <div id="custom-popup">
             <div class="popup-content">
                 <span class="close-btn" onclick="closePopup()">&times;</span>
-                <p class="popup-message">Please select at least 2 symptoms.</p>
+                <p class="popup-message">Please select at least 3 symptoms.</p>
                 <button class="popup-btn" onclick="closePopup()">OK</button>
             </div>
         </div>
@@ -69,7 +69,7 @@
     <script>
         function validateForm() {
             var checkboxes = document.querySelectorAll('input[name="symptoms"]:checked');
-            if (checkboxes.length < 2) {
+            if (checkboxes.length < 3) {
                 // Show the custom popup
                 document.getElementById('custom-popup').style.display = 'flex';
                 return false;

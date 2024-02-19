@@ -8,12 +8,18 @@
 body{
   font-family: montserrat;
 }
+.bg-color{
+  background-color: rgb(225, 242, 255);
+}
 
 /*     navbar     */      /*     navbar     */      /*     navbar     */
 header{
   position:sticky;
   top: -2px;left: 0;right: 0;
   z-index: 99;
+}
+.navbar{
+  padding: 0 !important;
 }
 nav{
   background: #0082e6;
@@ -135,7 +141,7 @@ main{
   box-sizing: border-box;
   border: 1px solid #ddd;
   border-radius: 10px;
-  background-color: white;
+  /* background-color: var(bg-color); */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -194,17 +200,17 @@ main{
 }
 .close-btn {
   position: absolute;
-  top: 10px;
+  top: -5px;
   right: 10px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 26px;
 }
 .popup-message {
   font-size: 18px;
   margin-bottom: 20px;
 }
 .popup-btn {
-  padding: 8px 16px;
+  padding: 4px 12px;
   background-color: #0082e6;
   color: #fff;
   border: none;
@@ -261,7 +267,7 @@ main{
   margin-bottom: 20px;
 }
 
-.home-page button {
+.home-page button, .btn1 {
   outline: none;
   border: none;
   padding: 10px 30px;
@@ -273,7 +279,7 @@ main{
   cursor: pointer; /* Add cursor pointer for better user interaction */
 }
 
-.home-page button:hover {
+.home-page button:hover, .btn1:hover {
   background-color: #1b9bff;
   transform: scale(1.05);
 }
@@ -437,4 +443,60 @@ label {
 
 .submit-btn:hover {
   background-color: #0056b3;
+}
+
+
+/* All Services  */           /* All Services  */               /* All Services  */
+.all-services .item{
+  transition: all .5s;
+}
+.all-services .item:hover{
+  transform: scale(1.05);
+}
+
+
+/*   Diabetes Prdiction  */
+.diabetes-page {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  /* margin: auto; */
+}
+
+.diabetes-page form{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.diabetes-page label {
+  /* display: block; */
+  margin-bottom: 10px;
+  margin-left: 10px;
+  /* color: #333; */
+  width: 100%;
+}
+
+.diabetes-page input {
+  /* width: fit-content; */
+  padding: 1px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+} 
+
+.diabetes-page button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.diabetes-page button:hover {
+  background-color: #45a049;
 }
