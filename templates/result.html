@@ -35,6 +35,12 @@
             <!-- <h2>Prediction Result</h2> -->
             <p>You are predicted to have: <strong>{{ disease }}</strong></p>
 
+            <p>Symptoms: {{ symptoms }}</p>
+    <p>Naive Bayes Prediction: {{ disease_naive_bayes }} (Probability: {{ probability_naive_bayes }}%)</p>
+    <p>Decision Tree Prediction: {{ disease_decision_tree }} (Probability: {{ probability_decision_tree }}%)</p>
+    <p>Random Forest Prediction: {{ disease_random_forest }} (Probability: {{ probability_random_forest }}%)</p>
+    <p>K-Nearest Neighbors (KNN) Prediction: {{ disease_knn }} (Probability: {{ probability_knn }}%)</p>
+
             <h3>Disease Information:</h3>
             {% if disease_info %}
             <p>{{ disease_info['description'] }}</p>

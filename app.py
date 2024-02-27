@@ -1,12 +1,20 @@
 from flask import Flask, render_template, request
 import joblib
+import pandas as pd
 import numpy as np
 from disease_info import disease_info
 
 app = Flask(__name__)
 
 # Load the trained Naive Bayes model
-model = joblib.load('naive_bayes_model.joblib')
+# model = joblib.load('naive_bayes_model.joblib')
+
+# Load trained models
+loaded_gnb = joblib.load('./models/naive_bayes_model.joblib')
+loaded_dtc = joblib.load('./models/decision_tree_model.joblib')
+loaded_rfc = joblib.load('./models/random_forest_model.joblib')
+loaded_knn = joblib.load('./models/knn_model.joblib')
+
 
 # List of symptoms and diseases (same as in your previous code)
 # List of symptoms
@@ -88,18 +96,50 @@ def predictions():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    user_input = request.form.getlist('symptoms')
-    input_vector = np.zeros(len(l1))
-    for symptom in user_input:
-        if symptom in l1:
-            input_vector[l1.index(symptom)] = 1
-    prediction = model.predict([input_vector])[0]
-    predicted_disease = disease[prediction]
+    symptoms = request.form.getlist('symptoms')
 
-    # Retrieve disease information based on the predicted disease
-    disease_info_for_prediction = disease_info.get(predicted_disease, {})
+    input_test = pd.DataFrame(0, index=[0], columns=l1)
+    for symptom in symptoms:
+        input_test[symptom] = 1
 
-    return render_template('result.html', disease=predicted_disease, disease_info=disease_info_for_prediction)
+    # Predict using Naive Bayes
+    predict_naive_bayes = loaded_gnb.predict(input_test)
+    predict_proba_naive_bayes = loaded_gnb.predict_proba(input_test)
+
+    # Predict using Decision Tree
+    predict_decision_tree = loaded_dtc.predict(input_test)
+    predict_proba_decision_tree = loaded_dtc.predict_proba(input_test)
+
+    # Predict using Random Forest
+    predict_random_forest = loaded_rfc.predict(input_test)
+    predict_proba_random_forest = loaded_rfc.predict_proba(input_test)
+
+    # Predict using K-Nearest Neighbors (KNN)
+    predict_knn = loaded_knn.predict(input_test)
+    predict_proba_knn = loaded_knn.predict_proba(input_test)
+
+    # Get the predicted disease name
+    predicted_disease_naive_bayes = disease[predict_naive_bayes[0]]
+    predicted_disease_decision_tree = disease[predict_decision_tree[0]]
+    predicted_disease_random_forest = disease[predict_random_forest[0]]
+    predicted_disease_knn = disease[predict_knn[0]]
+
+    # Get the probability for the predicted disease
+    probability_naive_bayes = max(predict_proba_naive_bayes[0])
+    probability_decision_tree = max(predict_proba_decision_tree[0])
+    probability_random_forest = max(predict_proba_random_forest[0])
+    probability_knn = max(predict_proba_knn[0])
+
+    return render_template('result.html',
+                           symptoms=symptoms,
+                           disease_naive_bayes=predicted_disease_naive_bayes,
+                           probability_naive_bayes=probability_naive_bayes * 100,
+                           disease_decision_tree=predicted_disease_decision_tree,
+                           probability_decision_tree=probability_decision_tree * 100,
+                           disease_random_forest=predicted_disease_random_forest,
+                           probability_random_forest=probability_random_forest * 100,
+                           disease_knn=predicted_disease_knn,
+                           probability_knn=probability_knn * 100)
 
 @app.route('/all-services')
 def allServices():

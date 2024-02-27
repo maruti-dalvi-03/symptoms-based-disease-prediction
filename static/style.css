@@ -109,16 +109,16 @@ nav a.active,nav a:hover{
   }
 }
 main{
- background-color: aliceblue;
+ /* background-color: aliceblue; */
   background-size: cover;
-  height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px);
 }
 
 
 /* symptom-prediction-container   ***********   symptom-prediction-container */
 
 .symptom-prediction-container {
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
   padding: 20px;
 }
 
@@ -447,12 +447,28 @@ label {
 
 
 /* All Services  */           /* All Services  */               /* All Services  */
-.all-services .item{
-  transition: all .5s;
+
+
+.service-container {
+  perspective: 1000px;
 }
-.all-services .item:hover{
-  transform: scale(1.05);
+.service-container a{
+  color: inherit;
 }
+.service-container .item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.5s, box-shadow 0.5s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.service-container .item:hover {
+  transform: rotateY(10deg); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
 
 
 /*   Diabetes Prdiction  */
@@ -461,8 +477,8 @@ label {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  /* margin: auto; */
+  max-width: 900px;
+  margin: 20px auto;
 }
 
 .diabetes-page form{
@@ -471,26 +487,27 @@ label {
 }
 
 .diabetes-page label {
-  /* display: block; */
-  margin-bottom: 10px;
+  margin-bottom: 7px;
   margin-left: 10px;
-  /* color: #333; */
   width: 100%;
+  font-weight: 500;
 }
 
-.diabetes-page input {
+.diabetes-page input , .diabetes-page select {
   /* width: fit-content; */
-  padding: 1px;
-  margin-bottom: 5px;
+  padding: 1px 7px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  min-width: 50px;
+  max-width: 200px;
 } 
 
 .diabetes-page button {
   background-color: #4caf50;
   color: white;
   padding: 10px 15px;
+  margin-top: 16px;
   border: none;
   border-radius: 4px;
   cursor: pointer;

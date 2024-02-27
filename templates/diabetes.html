@@ -30,7 +30,7 @@
 
     <main>
     <div class="diabetes-page">   
-         <h1>Diabetes Prediction</h1>
+    <h1 class="text-center my-3">Diabetes Prediction</h1>
     <form action="/diabetes" method="post">
         <label>Do you have high blood pressure? 
             <select name="HighBP" required>
@@ -53,8 +53,9 @@
                 <option value="0">No</option>
             </select>
         </label><br>
-        <label>Body Mass Index(BMI):
-            <input type="number" name="BMI" min="10" max="50" required>
+        <label for="BMI">Body Mass Index (BMI): 
+            <input type="number" id="BMI" name="BMI" min="10" max="50" required>
+            <span id="bmiError" class="error"></span>
         </label><br>
         <label>Have you smoked at least 100 cigarettes in your entire life? [Note: 5 packs = 100 cigarettes]
             <select name="Smoker" required>
@@ -70,14 +71,14 @@
                 <option value="0">No</option>
             </select>
         </label><br>
-        <label>coronary heart disease (CHD) or myocardial infarction (MI)
+        <label>Do you have coronary heart disease (CHD) or myocardial infarction (MI)?
             <select name="HeartDiseaseorAttack" required>
                 <option value="" disabled selected></option>
                 <option value="1">Yes</option>
                 <option value="0">No</option>
             </select>
         </label><br>
-        <label>physical activity in past 30 days - not including job
+        <label>Physical activity in past 30 days - not including job
             <select name="PhysActivity" required>
                 <option value="" disabled selected></option>
                 <option value="1">Yes</option>
@@ -130,11 +131,13 @@
             </select><br>
     
         </label><br>
-        <label>Now thinking about your mental health, which includes stress, depression, and problems with emotions, for how many days during the past 30 days was your mental health not good? scale 1-30 days: 
-            <input type="number" name="MentHlth" min="1" max="30" required>
+        <label for="MentHlth">Now thinking about your mental health, for how many days during the past 30 days was your mental health not good? (scale 1-30 days): 
+            <input type="number" id="MentHlth" name="MentHlth" min="0" max="30" required>
+            <span id="mentHlthError" class="error"></span>
         </label><br>
-        <label>Now thinking about your physical health, which includes physical illness and injury, for how many days during the past 30 days was your physical health not good? (scale 1-30 days) 
-            <input type="number" name="PhysHlth" min="1" max="30" required>
+        <label for="PhysHlth">Now thinking about your physical health, for how many days during the past 30 days was your physical health not good? (scale 1-30 days): 
+            <input type="number" id="PhysHlth" name="PhysHlth" min="0" max="30" required>
+            <span id="physHlthError" class="error"></span>
         </label><br>
         <label for="difficultySelect">Difficulty Walking or Climbing Stairs:
             <select name="DiffWalk">
@@ -216,5 +219,43 @@
     </ul>
     {% endif %} -->
 </main>
+
+<script>
+    function validateForm() {
+        // BMI validation
+        var bmiInput = document.getElementById('BMI');
+        var bmiError = document.getElementById('bmiError');
+        if (bmiInput.value < 0 || bmiInput.value > 50) {
+            bmiError.innerHTML = 'BMI must be between 0 and 50';
+            return false;
+        } else {
+            bmiError.innerHTML = '';
+        }
+
+        // Mental Health validation
+        var mentHlthInput = document.getElementById('MentHlth');
+        var mentHlthError = document.getElementById('mentHlthError');
+        if (mentHlthInput.value < 1 || mentHlthInput.value > 30) {
+            mentHlthError.innerHTML = 'Enter a value between 1 and 30';
+            return false;
+        } else {
+            mentHlthError.innerHTML = '';
+        }
+
+        // Physical Health validation
+        var physHlthInput = document.getElementById('PhysHlth');
+        var physHlthError = document.getElementById('physHlthError');
+        if (physHlthInput.value < 1 || physHlthInput.value > 30) {
+            physHlthError.innerHTML = 'Enter a value between 1 and 30';
+            return false;
+        } else {
+            physHlthError.innerHTML = '';
+        }
+
+        // If all validations pass, submit the form
+        return true;
+    }
+</script>
+
 </body>
 </html>
