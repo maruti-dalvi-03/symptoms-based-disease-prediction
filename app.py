@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request
 import joblib
 import pandas as pd
-import numpy as np
-from disease_info import disease_info
 
 app = Flask(__name__)
 
@@ -130,16 +128,22 @@ def predict():
     probability_random_forest = max(predict_proba_random_forest[0])
     probability_knn = max(predict_proba_knn[0])
 
+    predicted_diseases = [predicted_disease_naive_bayes, predicted_disease_decision_tree, predicted_disease_random_forest, predicted_disease_knn]
+
+    wikipedia_links = set(f"https://en.wikipedia.org/wiki/{disease}" for disease in predicted_diseases)
+
     return render_template('result.html',
-                           symptoms=symptoms,
-                           disease_naive_bayes=predicted_disease_naive_bayes,
-                           probability_naive_bayes=probability_naive_bayes * 100,
-                           disease_decision_tree=predicted_disease_decision_tree,
-                           probability_decision_tree=probability_decision_tree * 100,
-                           disease_random_forest=predicted_disease_random_forest,
-                           probability_random_forest=probability_random_forest * 100,
-                           disease_knn=predicted_disease_knn,
-                           probability_knn=probability_knn * 100)
+                       symptoms=[symptom.capitalize() for symptom in symptoms],
+                       disease_naive_bayes=predicted_disease_naive_bayes,
+                       probability_naive_bayes=f"{probability_naive_bayes * 100:.2f}",
+                       disease_decision_tree=predicted_disease_decision_tree,
+                       probability_decision_tree=f"{probability_decision_tree * 100:.2f}",
+                       disease_random_forest=predicted_disease_random_forest,
+                       probability_random_forest=f"{probability_random_forest * 100:.2f}",
+                       disease_knn=predicted_disease_knn,
+                       probability_knn=f"{probability_knn * 100:.2f}",
+                       wikipedia_links=wikipedia_links)
+
 
 @app.route('/all-services')
 def allServices():
@@ -174,9 +178,9 @@ def diabetesPredict():
 def contact():
     return render_template('contact.html')
 
-# @app.template_filter('capitalize_words')
-# def capitalize_words(s):
-#     return ' '.join(word.capitalize() for word in s.split('_'))
+@app.template_filter('capitalize_words')
+def capitalize_words(s):
+    return ' '.join(word.capitalize() for word in s.split('_'))
 
 if __name__ == '__main__':
     app.run(debug=True)

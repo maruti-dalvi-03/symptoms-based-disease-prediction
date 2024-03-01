@@ -32,48 +32,38 @@
 
     <main>
         <div class="result-container">
-            <!-- <h2>Prediction Result</h2> -->
-            <p>You are predicted to have: <strong>{{ disease }}</strong></p>
+            <h5 class="d-flex flex-column gap-1">
+                <span>Selected Symptoms:</span>
+                <p> {% for symptom in symptoms %}
+                    {{ symptom | capitalize_words }}
+                    {% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+            </h5>
+<hr>
 
-            <p>Symptoms: {{ symptoms }}</p>
-    <p>Naive Bayes Prediction: {{ disease_naive_bayes }} (Probability: {{ probability_naive_bayes }}%)</p>
-    <p>Decision Tree Prediction: {{ disease_decision_tree }} (Probability: {{ probability_decision_tree }}%)</p>
-    <p>Random Forest Prediction: {{ disease_random_forest }} (Probability: {{ probability_random_forest }}%)</p>
-    <p>K-Nearest Neighbors (KNN) Prediction: {{ disease_knn }} (Probability: {{ probability_knn }}%)</p>
+            <h5>You are predicted to have:</h5>
+            
+            <p><b>Naive Bayes Prediction: </b><strong>{{ disease_naive_bayes }}</strong> <br>(Probability: {{
+                probability_naive_bayes
+                }}%)</p>
+            <p><b>Decision Tree Prediction: </b><strong>{{ disease_decision_tree }}</strong> <br>(Probability: {{
+                probability_decision_tree }}%)</p>
+            <p><b>Random Forest Prediction: </b><strong>{{ disease_random_forest }}</strong> <br>(Probability: {{
+                probability_random_forest }}%)</p>
+            <p><b>K-Nearest Neighbors (KNN) Prediction: </b><strong>{{ disease_knn }}</strong> <br>(Probability: {{
+                probability_knn }}%)
+            </p>
+            <hr>
 
-            <h3>Disease Information:</h3>
-            {% if disease_info %}
-            <p>{{ disease_info['description'] }}</p>
-            {% else %}
-            <p>No information available for this disease.</p>
-            {% endif %}
+            <h5>More information about predicted disease.</h5>
+            <ul>
+                {% for link in wikipedia_links %}
+                    <li><a href="{{ link }}" target="_blank">{{ link }}</a></li>
+                {% endfor %}
+            </ul>
 
-            <h3>Signs and Symptoms:</h3>
-            {% if disease_info %}
-            <p>{{ disease_info['symptoms'] }}</p>
-            {% else %}
-            <p>No information available for signs and symptoms of this disease.</p>
-            {% endif %}
-
-            <h3>Prevention Measures:</h3>
-            {% if disease_info %}
-            <p>{{ disease_info['prevention'] }}</p>
-            {% else %}
-            <p>No information available for prevention measures of this disease.</p>
-            {% endif %}
-
-            <h3>Treatment Recommendations:</h3>
-            {% if disease_info %}
-            <p>{{ disease_info['treatment'] }}</p>
-            {% else %}
-            <p>No specific treatment information available for this disease.</p>
-            {% endif %}
-
-
-
-
-
-
+            <hr>
 
             <a href="/symptons-based-prediction">Go Back</a>
         </div>
