@@ -1,72 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disease Predictor || All Services</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disease Predictor || All Services</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
+
 <body>
-    <header>
-        <div class="navbar">
-            <nav>
-                <input type="checkbox" id="check">
-                <label for="check" class="checkbtn">
-                  <i class="fas fa-bars">&#9776;</i>
-                </label>
-                <label class="logo" onclick="redirectToHomePage()">WellPredict</label>
-                <ul>
-                  <li><a href="/">Home</a></li>
-                  <li><a href="/about">About</a></li>
-                  <li><a href="/symptons-based-prediction">Prediction</a></li>
-                  <li><a class="active" href="/all-services">ALl Services</a></li>
-                  <li><a href="/contact">Contact</a></li>
-                </ul>
-              </nav>
-            
-        </div>
-    </header>
-
-    <main>
-      <div class="all-services">
-
-        <div class="p-3 text-center">
-          <h1 class="">Welcome to WellPredict</h1>
-
-          <div class="service-container my-5 text-center d-flex justify-content-center gap-3 flex-wrap">
-            <div class="item border p-3 w-50 rounded-2 bg-color">
-                <a href="/all-services/diabetes" style="text-decoration: none;">
-                    <div class="img"><img src="/static/img/bg.jpg" alt="sample" width="100px"></div>
-                    <div class="text"><h6>Diabetes Risk Prediction</h6></div>
-                </a>
-            </div>
-            <div class="item border p-3 w-50 rounded-2 bg-color">
-                <div class="img"><img src="/static/img/bg.jpg" alt="sample" width="100px"></div>
-               <div class="text"><h6>Heart Health Assessment</h6></div> 
-            </div>
-            <div class="item border p-3 w-50 rounded-2 bg-color">
-                <div class="img"><img src="/static/img/bg.jpg" alt="sample" width="100px"></div>
-                <div class="text"><h6>Prediction</h6></div>
-            </div>
-          </div>
-         
-          <button onclick="redirectToSymptomsPage()" class="btn1">Select Symptoms</button>
-        </div>
-        
+  <header>
+    <div class="navbar">
+      <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+          <i class="fas fa-bars">&#9776;</i>
+        </label>
+        <label class="logo" onclick="redirectToHomePage()">WellPredict</label>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/symptons-based-prediction">Prediction</a></li>
+          <li><a class="active" href="/all-services">All Services</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-      
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script>
-      function redirectToSymptomsPage() {
-          window.location.href = '/symptons-based-prediction';
-      }
+  </header>
 
-      function redirectToHomePage() {
-        window.location.href = '/';
-      }
+  <main>
+    <div class="all-services">
+      <div class="p-3 text-center">
+        <h1 class="mb-4">Explore Our Services</h1>
+
+        <div class="service-container my-5 text-center d-flex justify-content-center gap-3 flex-wrap">
+          <div class="item border p-2 rounded-2 bg-color">
+            <a href="/all-services/diabetes" style="text-decoration: none;" class="d-flex align-itemst-center">
+              <div class="img border rounded-2">
+                <img src="/static/img/diabetes.jpeg" alt="Diabetes Prediction" width="100px">
+              </div>
+              <div class="text mx-2 my-auto">
+                <h6>Diabetes Risk Prediction</h6>
+              </div>
+            </a>
+          </div>
+          <div class="item border p-2 rounded-2 bg-color">
+            <a href="/all-services/heart-health" style="text-decoration: none;" class="d-flex align-itemst-center">
+              <div class="img border rounded-2"><img src="/static/img/heart.jpeg" alt="Heart Health Assessment" width="100px"></div>
+              <div class="text mx-2 my-auto">
+                <h6>Heart Health Assessment</h6>
+              </div>
+            </a>
+          </div>
+          <div class="item border p-2 rounded-2 bg-color">
+            <a href="/all-services/prediction" style="text-decoration: none;" class="d-flex align-itemst-center">
+              <div class="img border rounded-2"><img src="/static/img/bg.jpg" alt="Generic Prediction" width="100px"></div>
+              <div class="text mx-2 my-auto">
+                <h6>Generic Prediction</h6>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <button onclick="redirectToSymptomsPage()" class="btn btn-primary">Select Symptoms</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script>
+    function redirectToSymptomsPage() {
+      window.location.href = '/symptons-based-prediction';
+    }
+
+    function redirectToHomePage() {
+      window.location.href = '/';
+    }
   </script>
 </body>
+
 </html>

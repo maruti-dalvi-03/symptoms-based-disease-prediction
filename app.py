@@ -41,33 +41,45 @@ l1 = ['itching', 'skin_rash', 'nodal_skin_eruptions', 'continuous_sneezing', 'sh
       'red_sore_around_nose', 'yellow_crust_ooze']
 
 
+
 subcategories = {
-    'skin_related_symptoms': ['itching', 'skin_rash', 'nodal_skin_eruptions', 'ulcers_on_tongue', 'yellowish_skin', 'dark_urine',
-                     'red_spots_over_body', 'belly_pain', 'dischromic _patches', 'watering_from_eyes', 'pus_filled_pimples',
-                     'blackheads', 'scurring', 'skin_peeling', 'silver_like_dusting', 'small_dents_in_nails', 'inflammatory_nails',
-                     'blister', 'red_sore_around_nose', 'yellow_crust_ooze'],
+    'skin_related_symptoms': ['itching', 'skin_rash', 'nodal_skin_eruptions', 'internal_itching', 'bruising', 
+                              'dischromic _patches', 'red_spots_over_body', 'yellowish_skin', 'pus_filled_pimples', 
+                              'blackheads', 'skin_peeling', 'blister', 'yellow_crust_ooze'],
+
     'cold_related_symptoms': ['continuous_sneezing', 'shivering', 'chills', 'cold_hands_and_feets'],
-    'pain_related_symptoms': ['joint_pain', 'muscle_wasting', 'pain_behind_the_eyes', 'back_pain', 'neck_pain', 'dizziness', 'cramps',
-                     'bruising', 'knee_pain', 'hip_joint_pain', 'muscle_weakness', 'stiff_neck', 'painful_walking'],
-    'stomach_and_abdomen_related_symptoms': ['stomach_pain', 'acidity', 'vomiting', 'burning_micturition', 'indigestion', 'abdominal_pain',
-                                    'constipation', 'diarrhoea', 'swelling_of_stomach', 'malaise', 'distention_of_abdomen',
-                                    'stomach_bleeding'],
-    'face_and_throat_related_symptoms': ['mood_swings', 'patches_in_throat', 'cough', 'headache', 'sunken_eyes', 'breathlessness',
-                                'dehydration', 'yellowing_of_eyes', 'blurred_and_distorted_vision', 'redness_of_eyes',
-                                'runny_nose', 'chest_pain', 'weakness_in_limbs', 'fast_heart_rate', 'neck_pain'],
-    'heart_and_muscles_related_symptoms': ['fatigue', 'weight_gain', 'anxiety', 'weight_loss', 'restlessness',
-                                  'lethargy', 'high_fever', 'muscle_pain', 'pain_during_bowel_movements', 'pain_in_anal_region',
-                                  'bloody_stool', 'irritation_in_anus', 'obesity', 'swollen_legs', 'swollen_blood_vessels',
-                                  'puffy_face_and_eyes', 'enlarged_thyroid', 'brittle_nails', 'swollen_extremeties',
-                                  'excessive_hunger', 'extra_marital_contacts', 'slurred_speech', 'movement_stiffness',
-                                  'spinning_movements', 'loss_of_balance', 'unsteadiness', 'weakness_of_one_body_side',
-                                  'loss_of_smell', 'palpitations', 'pus_filled_pimples'],
-    'general_symptoms': ['anxiety', 'restlessness', 'lethargy', 'malaise', 'altered_sensorium', 'receiving_blood_transfusion',
-                'receiving_unsterile_injections', 'coma', 'history_of_alcohol_consumption'],
-    'urine_related_symptoms': ['spotting_urination', 'yellow_urine', 'foul_smell_of urine', 'continuous_feel_of_urine', 'passage_of_gases',
-                      'internal_itching', 'toxic_look_(typhos)', 'polyuria'],
-    'mental_issue_related_symptoms': ['anxiety', 'mood_swings', 'restlessness', 'depression', 'irritability', 'lack_of_concentration']
+
+    'pain_related_symptoms': ['joint_pain', 'headache', 'pain_behind_the_eyes', 'back_pain', 'abdominal_pain', 'chest_pain', 'pain_during_bowel_movements', 'pain_in_anal_region',
+                              'neck_pain', 'knee_pain', 'hip_joint_pain', 'muscle_pain', 'belly_pain', 'painful_walking'],
+
+    'stomach_and_abdomen_related_symptoms': ['stomach_pain', 'acidity', 'indigestion', 'constipation', 'bladder_discomfort', 
+                                             'stomach_bleeding', 'swelling_of_stomach', 'distention_of_abdomen', 'bloody_stool'],
+    
+    'face_and_throat_related_symptoms': ['ulcers_on_tongue', 'patches_in_throat', 'sunken_eyes', 'swelled_lymph_nodes','phlegm','throat_irritation','sinus_pressure','congestion',
+                                         'puffy_face_and_eyes','drying_and_tingling_lips','stiff_neck','loss_of_smell','watering_from_eyes','mucoid_sputum',
+                                         'yellowing_of_eyes', 'blurred_and_distorted_vision', 'redness_of_eyes','rusty_sputum','visual_disturbances',
+                                          'runny_nose', 'weakness_in_limbs','red_sore_around_nose'],
+
+    'heart_and_muscles_related_symptoms': ['muscle_wasting', 'weakness_in_limbs', 'cramps', 'muscle_weakness', 'palpitations', 
+                                           'acute_liver_failure', 'fast_heart_rate' ],
+
+    'general_symptoms': ['vomiting','fatigue','weight_gain','weight_loss','restlessness','lethargy','irregular_sugar_level','cough',
+                         'high_fever','breathlessness','sweating','dehydration','nausea','fluid_overload','loss_of_appetite','diarrhoea','mild_fever',
+                         'malaise','irritation_in_anus','dizziness','obesity','swollen_legs','swollen_blood_vessels',
+                         'enlarged_thyroid','brittle_nails'],
+
+    'general_symptoms ': ['swollen_extremeties','extra_marital_contacts','slurred_speech','swelling_joints','movement_stiffness','spinning_movements',
+                         'loss_of_balance','unsteadiness','weakness_of_one_body_side','passage_of_gases','toxic_look_(typhos)',
+                         'abnormal_menstruation','increased_appetite','family_history','receiving_blood_transfusion','receiving_unsterile_injections',
+                         'coma','history_of_alcohol_consumption','fluid_overload','prominent_veins_on_calf','scurring',
+                         'silver_like_dusting','small_dents_in_nails','inflammatory_nails'],
+
+    'urine_related_symptoms': ['spotting_urination', 'yellow_urine', 'dark_urine','burning_micturition', 'foul_smell_of urine', 
+                               'continuous_feel_of_urine', 'polyuria'],
+
+    'mental_issue_related_symptoms': ['anxiety', 'mood_swings', 'depression', 'irritability', 'excessive_hunger', 'lack_of_concentration', 'altered_sensorium']
 }
+
 
 # List of diseases
 disease = ['Fungal infection', 'Allergy', 'GERD', 'Chronic cholestasis', 'Drug Reaction',

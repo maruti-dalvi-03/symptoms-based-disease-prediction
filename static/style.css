@@ -454,6 +454,7 @@ label {
   overflow: hidden;
   transition: transform 0.5s, box-shadow 0.5s;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 350px;
 }
 
 .service-container .item:hover {
@@ -461,6 +462,9 @@ label {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+.service-container img{
+  height: 65px;
+}
 
 
 /*   Diabetes Prdiction  */
