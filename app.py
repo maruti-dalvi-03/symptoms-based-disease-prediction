@@ -4,9 +4,6 @@ import pandas as pd
 
 app = Flask(__name__)
 
-# Load the trained Naive Bayes model
-# model = joblib.load('naive_bayes_model.joblib')
-
 # Load trained models
 loaded_gnb = joblib.load('./models/naive_bayes_model.joblib')
 loaded_dtc = joblib.load('./models/decision_tree_model.joblib')
@@ -14,7 +11,6 @@ loaded_rfc = joblib.load('./models/random_forest_model.joblib')
 loaded_knn = joblib.load('./models/knn_model.joblib')
 
 
-# List of symptoms and diseases (same as in your previous code)
 # List of symptoms
 l1 = ['itching', 'skin_rash', 'nodal_skin_eruptions', 'continuous_sneezing', 'shivering', 'chills', 'joint_pain',
       'stomach_pain', 'acidity', 'ulcers_on_tongue', 'muscle_wasting', 'vomiting', 'burning_micturition',
@@ -185,6 +181,13 @@ def diabetesPredict():
     # return render_template('diabetes.html', prediction=predicted_label, prediction_proba=prediction_proba)
     return render_template('diabetes.html')
 
+@app.route('/all-services/heartattack')
+def heartattackPredict():
+    return render_template('heartattack.html')
+
+@app.route('/all-services/generic')
+def genericPredict():
+    return render_template('generic.html')
 
 @app.route('/contact')
 def contact():

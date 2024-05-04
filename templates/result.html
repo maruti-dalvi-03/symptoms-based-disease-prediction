@@ -32,40 +32,71 @@
 
     <main>
         <div class="result-container">
-            <h5 class="d-flex flex-column gap-1">
-                <span>Selected Symptoms:</span>
+            <h5 class="d-flex flex-column gap-1 text-center border">
+                <span style="background-color: rgb(78, 151, 224); color: aliceblue; padding: 3px; border-radius: 5px;">
+                    Selected Symptoms:
+                </span>
                 <p> {% for symptom in symptoms %}
                     {{ symptom | capitalize_words }}
                     {% if not loop.last %}, {% endif %}
                     {% endfor %}
                 </p>
             </h5>
-<hr>
 
-            <h5>You are predicted to have:</h5>
-            
-            <p><b>Naive Bayes Prediction: </b><strong>{{ disease_naive_bayes }}</strong> <br>(Probability: {{
-                probability_naive_bayes
-                }}%)</p>
-            <p><b>Decision Tree Prediction: </b><strong>{{ disease_decision_tree }}</strong> <br>(Probability: {{
-                probability_decision_tree }}%)</p>
-            <p><b>Random Forest Prediction: </b><strong>{{ disease_random_forest }}</strong> <br>(Probability: {{
-                probability_random_forest }}%)</p>
-            <p><b>K-Nearest Neighbors (KNN) Prediction: </b><strong>{{ disease_knn }}</strong> <br>(Probability: {{
-                probability_knn }}%)
-            </p>
-            <hr>
+            <div class="predected-section text-center border p-2 my-5">
+                <h5 style="background-color: rgb(78, 151, 224); color: aliceblue; padding: 3px; border-radius: 5px;">
+                    You are predicted to have:
+                </h5>
+                <table class="table table-striped w-50 m-auto">
+                    <thead>
+                        <tr>
+                            <th class="border-end text-white bg-dark">Algorithm Used</th>
+                            <th class="border-end text-white bg-dark">Predicted Diseases</th>
+                            <th class="text-white bg-dark">Probability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border-end">Naive Bayes Prediction</td>
+                            <td class="border-end text-red">{{ disease_naive_bayes }}</td>
+                            <td>{{ probability_naive_bayes }}%</td>
+                        </tr>
+                        <tr>
+                            <td class="border-end">Decision Tree Prediction</td>
+                            <td class="border-end text-red">{{ disease_decision_tree }}</td>
+                            <td>{{ probability_decision_tree }}%</td>
+                        </tr>
+                        <tr>
+                            <td class="border-end">Random Forest Prediction</td>
+                            <td class="border-end text-red">{{ disease_random_forest }}</td>
+                            <td>{{ probability_random_forest }}%</td>
+                        </tr>
+                        <tr>
+                            <td class="border-end">K-Nearest Neighbors (KNN) Prediction</td>
+                            <td class="border-end text-red">{{ disease_knn }}</td>
+                            <td>{{ probability_knn }}%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-            <h5>More information about predicted disease.</h5>
-            <ul>
-                {% for link in wikipedia_links %}
+          
+
+            <div class="more-information border">
+                <h5 class="text-center" style="background-color: rgb(78, 151, 224); color: aliceblue; padding: 3px; border-radius: 5px;">
+                    More information about predicted disease:
+                </h5>
+                <ul>
+                    {% for link in wikipedia_links %}
                     <li><a href="{{ link }}" target="_blank">{{ link }}</a></li>
-                {% endfor %}
-            </ul>
+                    {% endfor %}
+                </ul>
+            </div>
+            
 
-            <hr>
+            
 
-            <a href="/symptons-based-prediction">Go Back</a>
+            <a href="/symptons-based-prediction" class="btn border text-white" style="background-color: rgb(78, 151, 224);">Go Back</a>
         </div>
     </main>
 

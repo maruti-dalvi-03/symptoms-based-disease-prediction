@@ -4,6 +4,7 @@
   text-decoration: none;
   list-style: none;
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 body{
   font-family: montserrat;
@@ -11,7 +12,15 @@ body{
 .bg-color{
   background-color: rgb(225, 242, 255);
 }
-
+.text-red{
+  color: rgb(238, 70, 70) !important;
+}
+.text-main{
+  color: #1b9bff !important;
+}
+.bg-main{
+  background-color: #1b9bff !important;
+}
 /*     navbar     */      /*     navbar     */      /*     navbar     */
 header{
   position:sticky;
